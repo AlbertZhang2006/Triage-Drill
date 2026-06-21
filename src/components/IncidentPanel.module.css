@@ -1,0 +1,294 @@
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.panelTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.statusBadge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 4px;
+}
+
+.statusActive {
+  color: var(--color-primary);
+  background: rgba(51, 77, 126, 0.08);
+}
+
+.statusCompleted {
+  color: var(--color-green);
+  background: rgba(21, 128, 61, 0.08);
+}
+
+/* ── Status view ── */
+
+.statusView {
+  padding: 14px 16px;
+}
+
+.incidentInfo {
+  margin-bottom: 14px;
+}
+
+.incidentName {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.incidentLocation {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.incidentMeta {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.actionBtn {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  min-height: 48px;
+}
+
+.actionBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.actionBtnSecondary {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  min-height: 48px;
+}
+
+.actionBtnSecondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.actionBtnDanger {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  min-height: 48px;
+}
+
+.actionBtnDanger:hover {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+
+/* ── Confirm row ── */
+
+.confirmRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.confirmText {
+  flex: 1;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.confirmYes {
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  min-height: 36px;
+}
+
+.confirmDanger {
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-red);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  min-height: 36px;
+}
+
+.confirmCancel {
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  min-height: 36px;
+}
+
+/* ── New form ── */
+
+.newForm {
+  padding: 14px 16px;
+}
+
+.formRow {
+  margin-bottom: 12px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin-bottom: 5px;
+}
+
+.formInput {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  font-family: inherit;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.formActions {
+  display: flex;
+  gap: 8px;
+}
+
+.startBtn {
+  flex: 1;
+  padding: 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  min-height: 48px;
+}
+
+.startBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  padding: 14px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  min-height: 48px;
+}
+
+/* ── Scenario selector ── */
+
+.scenarioView {
+  padding: 14px 16px;
+}
+
+.scenarioHeader {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.scenarioList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.scenarioCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  min-height: 48px;
+}
+
+.scenarioCard:hover {
+  border-color: var(--color-primary);
+  background: var(--color-bg);
+}
+
+.scenarioName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.scenarioLocation {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.scenarioDesc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}

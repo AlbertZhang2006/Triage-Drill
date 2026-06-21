@@ -1,0 +1,344 @@
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 40px;
+  padding-top: max(48px, env(safe-area-inset-top, 48px));
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 36px;
+  animation: fadeSlideUp 0.4s ease both;
+}
+
+.title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Menu view */
+
+.menuGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  animation: fadeSlideUp 0.4s ease 0.1s both;
+}
+
+.menuCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  min-height: 64px;
+  text-align: left;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+
+.menuCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(51, 77, 126, 0.08);
+}
+
+.menuIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+}
+
+.menuCard:hover .menuIcon {
+  color: var(--color-primary);
+}
+
+.menuText {
+  flex: 1;
+  min-width: 0;
+}
+
+.menuTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  display: block;
+  color: var(--color-text);
+}
+
+.menuDesc {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  display: block;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Form section (start + join views) */
+
+.formSection {
+  width: 100%;
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  animation: fadeSlideUp 0.3s ease both;
+}
+
+.formRow {
+  margin-bottom: 12px;
+}
+
+.formRow:last-of-type {
+  margin-bottom: 0;
+}
+
+.formLabel {
+  display: block;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.formInput {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Join code input */
+
+.joinInput {
+  width: 100%;
+  padding: 16px 14px;
+  font-size: 1.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.joinInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.joinInput::placeholder {
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  opacity: 0.5;
+}
+
+.joinError {
+  font-size: 0.8125rem;
+  color: var(--color-red);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Buttons */
+
+.buttonRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  min-height: 48px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.submitBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  min-height: 48px;
+}
+
+.cancelBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+
+/* Scenario cards (demo view) */
+
+.scenarioList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  animation: fadeSlideUp 0.3s ease both;
+}
+
+.scenarioCard {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  min-height: 48px;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+
+.scenarioCard:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(51, 77, 126, 0.08);
+}
+
+.scenarioName {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.scenarioLocation {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.scenarioDesc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Section heading for sub-views */
+
+.sectionHeading {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Tutorial button */
+
+.tutorialBtnWrap {
+  width: 100%;
+  margin-top: 24px;
+  animation: fadeSlideUp 0.4s ease 0.2s both;
+}
+
+.tutorialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  min-height: 52px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+
+.tutorialBtn:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(51, 77, 126, 0.1);
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding-bottom: 20px;
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.aboutLink {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  min-height: 36px;
+}
+
+.aboutLink:hover {
+  background: rgba(51, 77, 126, 0.06);
+}

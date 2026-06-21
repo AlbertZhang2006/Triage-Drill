@@ -483,10 +483,9 @@ export const useStore = create<AppState>()(
         role: state.role,
         incident: state.incident,
       }),
-      onRehydrate: (_state, error) => {
-        if (error) return;
-        return (rehydrated) => {
-          if (!rehydrated) return;
+      onRehydrateStorage: () => {
+        return (rehydrated?: AppState, error?: unknown) => {
+          if (error || !rehydrated) return;
           const { joinCode, participantId, mode } = rehydrated;
           if (joinCode && mode === 'local') {
             connectSync(joinCode, participantId, isSupabaseConfigured);

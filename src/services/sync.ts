@@ -9,12 +9,10 @@ export interface SyncMessage {
 
 export class IncidentSync {
   private channel: BroadcastChannel | null = null;
-  private joinCode: string | null = null;
   private listeners: Set<(msg: SyncMessage) => void> = new Set();
 
   connect(joinCode: string): void {
     this.disconnect();
-    this.joinCode = joinCode;
     this.channel = new BroadcastChannel(`mci-triage-${joinCode}`);
     this.channel.onmessage = (e: MessageEvent) => {
       const msg = e.data as SyncMessage;
@@ -25,7 +23,6 @@ export class IncidentSync {
   disconnect(): void {
     this.channel?.close();
     this.channel = null;
-    this.joinCode = null;
   }
 
   broadcast(msg: SyncMessage): void {

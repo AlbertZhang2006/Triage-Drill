@@ -37,7 +37,7 @@ interface AppState {
   incident: Incident;
 
   createSession: (name: string, location?: string) => string;
-  joinSession: (joinCode: string) => boolean;
+  joinSession: (joinCode: string) => Promise<boolean>;
   loadDemoSession: (scenarioName?: string) => void;
   leaveSession: () => void;
 
@@ -188,20 +188,16 @@ export const useStore = create<AppState>()(
         return code;
       },
 
-      joinSession: (joinCode) => {
-        const localEntry = findSession(joinCode);
-
+      joinSession: async (joinCode) => {
         if (isSupabaseConfigured) {
+          const incident = await findIncidentByCode(joinCode);
+          if (!incident) return false;
           connectSync(joinCode, get().participantId, true);
-          findIncidentByCode(joinCode).then((incident) => {
-            if (incident) {
-              set({ incident });
-            }
-          });
-          set({ joinCode, mode: 'local' });
+          set({ joinCode, mode: 'local', incident });
           return true;
         }
 
+        const localEntry = findSession(joinCode);
         if (!localEntry) return false;
 
         connectSync(joinCode, get().participantId, false);

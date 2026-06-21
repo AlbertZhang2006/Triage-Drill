@@ -35,12 +35,16 @@ function JoinCodeHandler() {
 
   useEffect(() => {
     if (joinCode) {
-      const success = joinSession(joinCode);
-      if (success) {
-        navigate('/roles', { replace: true });
-      } else {
-        navigate('/', { replace: true });
-      }
+      let cancelled = false;
+      joinSession(joinCode).then((success) => {
+        if (cancelled) return;
+        if (success) {
+          navigate('/roles', { replace: true });
+        } else {
+          navigate('/', { replace: true });
+        }
+      });
+      return () => { cancelled = true; };
     }
   }, [joinCode, joinSession, navigate]);
 

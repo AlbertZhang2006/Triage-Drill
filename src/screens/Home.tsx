@@ -28,6 +28,7 @@ export default function Home() {
   const [location, setLocation] = useState('');
   const [joinCode, setJoinCode] = useState('');
   const [joinError, setJoinError] = useState<string | null>(null);
+  const [joining, setJoining] = useState(false);
 
   function handleStartSubmit(e?: React.FormEvent) {
     e?.preventDefault();
@@ -36,15 +37,20 @@ export default function Home() {
     navigate('/roles');
   }
 
-  function handleJoinSubmit(e?: React.FormEvent) {
+  async function handleJoinSubmit(e?: React.FormEvent) {
     e?.preventDefault();
-    if (!joinCode.trim()) return;
+    if (!joinCode.trim() || joining) return;
     setJoinError(null);
-    const success = joinSession(joinCode.trim());
-    if (success) {
-      navigate('/roles');
-    } else {
-      setJoinError('Session not found. Check the code and try again.');
+    setJoining(true);
+    try {
+      const success = await joinSession(joinCode.trim());
+      if (success) {
+        navigate('/roles');
+      } else {
+        setJoinError('Session not found. Check the code and try again.');
+      }
+    } finally {
+      setJoining(false);
     }
   }
 
@@ -194,10 +200,10 @@ export default function Home() {
             <button
               className={styles.submitBtn}
               type="button"
-              disabled={!joinCode.trim()}
+              disabled={!joinCode.trim() || joining}
               onClick={() => handleJoinSubmit()}
             >
-              Join Session
+              {joining ? 'Joining…' : 'Join Session'}
             </button>
             <button className={styles.cancelBtn} type="button" onClick={handleCancel}>
               Cancel

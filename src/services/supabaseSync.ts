@@ -21,18 +21,23 @@ export async function createIncidentRow(
     completed_at: incident.completedAt,
     state: incident,
   });
+  if (error) console.error('[Supabase] createIncidentRow failed:', error.message);
   return !error;
 }
 
 export async function findIncidentByCode(
   joinCode: string,
 ): Promise<Incident | null> {
-  if (!supabase) return null;
+  if (!supabase) {
+    console.error('[Supabase] Client not configured');
+    return null;
+  }
   const { data, error } = await supabase
     .from('incidents')
     .select('state')
     .eq('join_code', joinCode)
     .single();
+  if (error) console.error('[Supabase] findIncidentByCode failed:', error.message);
   if (error || !data) return null;
   return data.state as Incident;
 }

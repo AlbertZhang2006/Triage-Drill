@@ -179,7 +179,9 @@ export const useStore = create<AppState>()(
         registerSession(code, name);
 
         if (isSupabaseConfigured) {
-          createIncidentRow(code, incident);
+          createIncidentRow(code, incident).then((ok) => {
+            if (!ok) console.error('[Session] Failed to persist incident to Supabase');
+          });
         }
 
         connectSync(code, get().participantId, true);

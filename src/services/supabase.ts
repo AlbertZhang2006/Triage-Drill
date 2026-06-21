@@ -7,3 +7,7 @@ export const supabase: SupabaseClient | null =
   url && key ? createClient(url, key) : null;
 
 export const isSupabaseConfigured = supabase !== null;
+
+if (!isSupabaseConfigured) {
+  console.warn('[Supabase] Not configured — VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY is missing. Cross-device sync disabled.');
+}

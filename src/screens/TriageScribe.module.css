@@ -194,10 +194,27 @@
 .rowCount {
   font-size: 1.75rem;
   font-weight: 700;
-  min-width: 44px;
+  min-width: 36px;
   text-align: center;
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
+}
+
+@media (max-width: 400px) {
+  .countRow {
+    gap: 8px;
+    padding: 12px 10px;
+  }
+
+  .rowCount {
+    font-size: 1.5rem;
+    min-width: 30px;
+  }
+
+  .addBtn {
+    min-width: 48px;
+    padding: 0 8px;
+  }
 }
 
 .rowActions {
@@ -207,8 +224,9 @@
 }
 
 .undoBtn {
-  width: 48px;
+  min-width: 40px;
   height: 48px;
+  padding: 0 8px;
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: var(--radius-sm);
@@ -218,6 +236,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .undoBtn:hover:not(:disabled) {
@@ -231,8 +250,9 @@
 }
 
 .addBtn {
-  width: 76px;
+  min-width: 56px;
   height: 48px;
+  padding: 0 12px;
   font-size: 1.0625rem;
   font-weight: 700;
   border-radius: var(--radius-sm);

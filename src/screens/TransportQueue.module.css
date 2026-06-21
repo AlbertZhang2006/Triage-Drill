@@ -173,10 +173,12 @@
 .catPicker {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
 }
 
 .catBtn {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: calc(50% - 4px);
   padding: 10px 4px;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -187,6 +189,13 @@
   color: var(--color-text-secondary);
   min-height: 44px;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+}
+
+@media (min-width: 400px) {
+  .catBtn {
+    min-width: 0;
+    flex: 1;
+  }
 }
 
 .catBtnActive {

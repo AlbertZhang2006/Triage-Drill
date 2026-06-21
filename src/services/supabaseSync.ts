@@ -25,29 +25,16 @@ export async function createIncidentRow(
   return !error;
 }
 
-let lastLookupError: string | null = null;
-
-export function getLastLookupError(): string | null {
-  return lastLookupError;
-}
-
 export async function findIncidentByCode(
   joinCode: string,
 ): Promise<Incident | null> {
-  lastLookupError = null;
-  if (!supabase) {
-    lastLookupError = 'Client not configured';
-    return null;
-  }
+  if (!supabase) return null;
   const { data, error } = await supabase
     .from('incidents')
     .select('state')
     .eq('join_code', joinCode)
     .single();
-  if (error) {
-    lastLookupError = `${error.code}: ${error.message}`;
-    console.error('[Supabase] findIncidentByCode failed:', error.message, error.code, error.details);
-  }
+  if (error) console.error('[Supabase] findIncidentByCode failed:', error.message);
   if (error || !data) return null;
   return data.state as Incident;
 }

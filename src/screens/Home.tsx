@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../store';
 import { DRILL_SCENARIOS } from '../types';
-import { getSupabaseDebugInfo, getLastLookupError } from '../services/supabaseSync';
+import { getSupabaseDebugInfo } from '../services/supabaseSync';
 import styles from './Home.module.css';
 
 type View = 'menu' | 'start' | 'join' | 'demo';
@@ -48,8 +48,7 @@ export default function Home() {
       if (success) {
         navigate('/roles');
       } else {
-        const dbErr = getLastLookupError();
-        setJoinError(`Session not found. ${getSupabaseDebugInfo()}. DB error: ${dbErr ?? 'none'}`);
+        setJoinError('Session not found. Check the code and try again.');
       }
     } finally {
       setJoining(false);

@@ -39,14 +39,6 @@ export async function findIncidentByCode(
   return data.state as Incident;
 }
 
-export function getSupabaseDebugInfo(): string {
-  const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-  const key = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-  if (!url && !key) return 'Supabase: no env vars set';
-  if (!url) return 'Supabase: URL missing';
-  if (!key) return 'Supabase: key missing';
-  return `Supabase: connected (${url.slice(0, 30)}...)`;
-}
 
 export async function updateIncidentState(
   joinCode: string,
